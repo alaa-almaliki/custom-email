@@ -1,0 +1,18 @@
+{
+    "name": "alaa/module-custom-email",
+    "description": "Magento Custom Email",
+    "type": "magento2-module",
+    "version": "0.0.1",
+    "license": "MIT",
+    "require": {
+        "magento/framework": "101.0.*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Alaa\\CustomEmail\\": ""
+        }
+    }
+}
