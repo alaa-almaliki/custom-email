@@ -40,7 +40,7 @@ app/code/Namespace/Modulename/etc/email_templates.xml
 app/code/Namespace/Modulename/view/frontend/email/contactus.html
 
 ```
-<!--@subject trans "Contact Us" @-->
+<!--@subject "Contact Us" @-->
 <p>Name: {{var name}}</p>
 <p>Email: {{var email}}</p>
 <p>Comment: {{var comment}}</p>
