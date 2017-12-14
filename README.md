@@ -15,7 +15,7 @@ $data = [
             'template_identifier' => ['contact_us'],
             'template_options' => [['area' => Area::AREA_FRONTEND ,'store' => $this->storeManager->getStore()->getId()]],
             'template_vars' => [$data],
-            'from' => [['email' => 'smith.brown@example.com', 'name' => 'Smith Brown']],
+            'from' => [['email' => 'john.doe@domain.com', 'name' => 'John Doe']],
             'to' => ['email' =>'tom.right@example.com', 'name' => 'Tom Right'],
             'cc' => ['email' =>'sarah.foxon@yahoo.com', 'name' => 'Sarah Foxon'],
             'bcc' => ['email' =>'Ahmed.Hassan@example.com', 'name' => 'Ahmed Hassan'],
