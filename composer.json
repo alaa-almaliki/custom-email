@@ -1,18 +1,19 @@
 {
-    "name": "alaa/module-custom-email",
-    "description": "Magento Custom Email",
-    "type": "magento2-module",
-    "version": "0.0.1",
-    "license": "MIT",
-    "require": {
-        "magento/framework": "101.0.*"
-    },
-    "autoload": {
-        "files": [
-            "registration.php"
-        ],
-        "psr-4": {
-            "Alaa\\CustomEmail\\": ""
-        }
+  "name": "alaa/module-custom-email",
+  "description": "Magento Custom Email",
+  "type": "magento2-module",
+  "version": "0.0.1",
+  "license": "MIT",
+  "require": {
+    "php": "~5.6.0|7.0.2|7.0.4|~7.0.6|~7.1.0",
+    "magento/framework": "101.0.*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Alaa\\CustomEmail\\": ""
     }
+  }
 }

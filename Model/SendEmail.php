@@ -41,26 +41,35 @@ class SendEmail implements SendEmailInterface
     }
 
     /**
-     * @param array $to
      * @return \Alaa\CustomEmail\Model\SendEmailInterface
      */
-    public function send(array $to)
+    public function send()
     {
         $this->prepareEmail();
-        $this->transportBuilder->addTo($to['email'], $to['name']);
         $this->transportBuilder->getTransport()->sendMessage();
         return $this;
     }
 
     /**
      * @return $this
+     * @throws \Exception
      */
     protected function prepareEmail()
     {
         foreach ($this->config as $method => $value) {
+            if (!method_exists($this->transportBuilder, $this->getMethod($method))
+                || $this->getMethod($method) === null
+            ) {
+                $message = sprintf(
+                    'Undefined method %s of class %s',
+                    $this->getMethod($method),
+                    get_class($this->transportBuilder)
+                );
+                throw new \Exception(__($message));
+            }
             call_user_func_array(
                 [$this->transportBuilder, $this->getMethod($method)],
-                [$value]
+                $value
             );
         }
 
@@ -84,7 +93,26 @@ class SendEmail implements SendEmailInterface
             $toCamelCase = ucfirst($name);
         }
 
-        $method =  'set' . $toCamelCase;
-        return $method;
+        foreach (['set', 'add'] as $prefix) {
+            $searchMethod = $prefix . $toCamelCase;
+            if (array_key_exists($searchMethod, array_flip($this->getMethods()))) {
+                return $searchMethod;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getMethods()
+    {
+        static $methods = [];
+        if (empty($methods)) {
+            $methods = get_class_methods($this->transportBuilder);
+        }
+
+        return $methods;
     }
 }

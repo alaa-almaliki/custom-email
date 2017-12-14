@@ -16,8 +16,7 @@ interface SendEmailInterface
     public function setConfig(array $config);
 
     /**
-     * @param array $to
      * @return \Alaa\CustomEmail\Model\SendEmailInterface
      */
-    public function send(array $to);
+    public function send();
 }
