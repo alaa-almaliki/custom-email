@@ -1,1 +1,1 @@
-# Magento Custom Email
+# Magento2 Custom Email
